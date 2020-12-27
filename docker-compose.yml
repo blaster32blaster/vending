@@ -1,0 +1,11 @@
+version: "3.2"
+services:
+  vending_php:
+    build: .
+    container_name: vending_cont
+    command:
+      sh /var/startup.sh
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "8074:80"

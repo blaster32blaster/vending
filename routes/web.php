@@ -13,6 +13,29 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+// $router->get('/', function () use ($router) {
+//     return $router->app->version();
+// });
+
+// $router->get('user', function () use ($router) {
+//     return $router->app->version();
+// });
+
+$router->put('/', [
+    'uses' => 'CoinController@put',
+    'middleware' => 'putCoins'
+]);
+
+$router->delete('/', [
+    'uses' => 'CoinController@delete'
+]);
+
+
+
+$router->get('inventory', [
+    'uses' => 'InventoryController@get'
+]);
+
+$router->put('inventory/{id}', [
+    'uses' => 'InventoryController@put'
+]);
