@@ -39,26 +39,8 @@ RUN a2enmod rewrite
 
 WORKDIR /var/www/html
 
-# RUN useradd -m -u 1000 artisan
-
-# Configure directory permissions for the web server
-# RUN chown -R www-data:www-data /var/www/html/storage
-
 #create the containers php.ini
 RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini && \
     sed -i -e "s/^ *memory_limit.*/memory_limit = 4G/g" /usr/local/etc/php/php.ini
-
-# set the docroot
-# ENV APACHE_DOCUMENT_ROOT=/var/www/public
-# RUN sed -ri -e 's!/var/www!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-# RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
-
-
-# RUN sed -ri -e 's!/var/www/html/public!g' /etc/apache2/sites-available/*.conf
-# RUN sed -ri -e 's!/var/www/public!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
-
-# ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
-# RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-# RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
 COPY ./dock-files/startup.sh /var/startup.sh
