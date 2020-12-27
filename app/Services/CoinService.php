@@ -115,6 +115,11 @@ class CoinService
         }
     }
 
+    /**
+     * set the coin model
+     *
+     * @return void
+     */
     public function setCoin() : void
     {
         try {
@@ -128,6 +133,11 @@ class CoinService
         }
     }
 
+    /**
+     * get the current coin count
+     *
+     * @return integer
+     */
     public function getCurrenCoinCount() : int
     {
         try {
@@ -137,6 +147,12 @@ class CoinService
         }
     }
 
+    /**
+     * set the current coints count
+     *
+     * @param integer $number
+     * @return void
+     */
     public function setCoinCount(int $number) : void
     {
         try {
@@ -147,6 +163,11 @@ class CoinService
         }
     }
 
+    /**
+     * set the coin to 0, return how many coins to refund
+     *
+     * @return integer
+     */
     public function handleCoinReset() : int
     {
         $responseCount = $this->getCurrenCoinCount();

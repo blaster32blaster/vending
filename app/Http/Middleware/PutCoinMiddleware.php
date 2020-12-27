@@ -20,7 +20,7 @@ class PutCoinMiddleware
     }
 
     /**
-     * Handle an incoming request.
+     * Ensure that a put coin request has the coins in the proper format
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

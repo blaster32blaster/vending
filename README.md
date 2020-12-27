@@ -1,23 +1,32 @@
-# Lumen PHP Framework
+# Lumen Vending
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+## Documentation
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+    The Lumen vending application is built to make setup as easy as possible, using docker and other tools to perform setup with a single command.  This application will handle 3 inventory items and support adding coins, refunding, coins, and purchasing individual items.
 
-## Official Documentation
+## Getting Started
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+    - Clone this repository
+    - Ensure that Docker is installed and running on the system
+    - Run the command 'docker-compose up'
+    - If given success messages, this application should then be able to be communicated with on localhost:8074
 
-## Contributing
+## Troubleshooting
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    - This application is set to use port 8074, if this port is already in use, the port can be changed in the root directory docker-compose.yml on line 11
 
-## Security Vulnerabilities
+## Endpoints
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+    Method | Route | Request Body | Response Code | Response Headers | Response Body
+    ```
+    PUT | / | { “coin”: 1 } | 204 | X-Coins: ${number of coins accepted} |
+
+    DELETE | / | | 204 | X-Coins: ${number of coins returned} |
+
+    GET | /inventory | | 200 | | An array of remaining item quantities (an array of integers)
+
+    PUT | /inventory/:id || 200  | X-Coins: ${number of coins returned} X-Inventory-Remaining: ${item quantity} | { “quantity”: ${number of items purchased} }
+    ```
 
 ## License
 
